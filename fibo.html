@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fibonacci Series</title>
+</head>
+<body>
+    <h1>Fibonacci Series</h1>
+    <label for="num">Enter the number of terms:</label>
+    <input type="number" name="num" id="num">
+    <input type="button" value="Submit">
+    <br>
+    <br>
+    <div id="result"></div>
+    <script>
+        function fibonacci() {
+            let num = document.getElementById('num').value;
+            if (num < 0) {
+                alert("Please enter a positive number");
+            } else {
+                let a = 0, b = 1;
+                let result = a + " " + b;
+                for (let i = 2; i < num; i++) {
+                    let c = a + b;
+                    result += " " + c;
+                    a = b;
+                    b = c;
+                }
+                document.getElementById('result').innerHTML = result;
+            }
+        }
+
+        const button = document.querySelector('input[type="button"]');
+        
+        button.addEventListener('click', function () {
+            fibonacci();
+        });
+
+        document.addEventListener('keydown', function (event) {
+            if (event.key === 'Enter') {
+                fibonacci();
+            }
+        });
+    </script>
+</body>
+</html>

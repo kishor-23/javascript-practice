@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Rock Paper Scissors</h1>
+    <h2>user choice <span id="user"></span></h2>
+    <h2>computer choice <span id="computer"></span></h2>
+    <h2>result <span id="result"></span></h2>
+    <button id="rock">Rock</button>
+    <button id="paper">Paper</button>
+    <button id="scissors">Scissors</button>
+    <script>
+        const buttons = document.querySelectorAll('button');
+        const user = document.getElementById('user');
+        const computer = document.getElementById('computer');
+        const result = document.getElementById('result');
+        const choices = ['rock', 'paper', 'scissors'];
+
+        buttons.forEach(button => {
+            button.addEventListener('click', function () {
+                const userChoice = button.id;
+                user.textContent = userChoice;
+                const computerChoice = choices[Math.floor(Math.random() * choices.length)];
+                computer.textContent = computerChoice;
+                if (userChoice === computerChoice) {
+                    result.textContent = 'It is a tie';
+                } else if (userChoice === 'rock' && computerChoice === 'scissors' || userChoice === 'paper' && computerChoice === 'rock' || userChoice === 'scissors' && computerChoice === 'paper') {
+                    result.textContent = 'You win';
+                } else {
+                    result.textContent = 'You lose';
+                }
+            });
+        });
+    </script>
+</body>
+</html>
